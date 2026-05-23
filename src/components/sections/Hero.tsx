@@ -9,9 +9,8 @@ export function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden border-b border-white/10 pt-20">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-[#0a0a0a] to-[#0a0a0a]" />
-      
+
       <div className="container px-4 md:px-6 relative z-10 flex flex-col items-center text-center space-y-8">
-        
         {/* Animated Logo at the top of Hero */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
@@ -34,7 +33,7 @@ export function Hero() {
           <span className="flex h-2 w-2 rounded-full bg-blue-500 mr-2"></span>
           Inovação e Engenharia de Software
         </motion.div>
-        
+
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -53,7 +52,8 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="max-w-[600px] text-gray-400 md:text-xl"
         >
-          Na Loading Tecnology, desenvolvemos soluções de software escaláveis e modernas que impulsionam o seu negócio para o futuro.
+          Na Loading Tecnology, desenvolvemos soluções de software escaláveis e
+          modernas que impulsionam o seu negócio para o futuro.
         </motion.p>
 
         <motion.div
@@ -62,11 +62,18 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex flex-col sm:flex-row gap-4"
         >
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white border-0 rounded-full px-8 py-6 text-lg">
-            Inicie seu Projeto
+          <Button
+            asChild
+            className="bg-blue-600 hover:bg-blue-700 text-white border-0 rounded-full px-8 py-6 text-lg"
+          >
+            <a href="#contato">
+              Inicie seu Projeto
+            </a>
           </Button>
-          <Button className="bg-transparent text-white border border-white/20 hover:bg-white/10 rounded-full px-8 py-6 text-lg">
-            Conheça nossos cases
+          <Button asChild className="bg-transparent text-white border border-white/20 hover:bg-white/10 rounded-full px-8 py-6 text-lg">
+            <a href="#cases">
+              Conheça nossos cases
+            </a>
           </Button>
         </motion.div>
       </div>

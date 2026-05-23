@@ -10,9 +10,9 @@ export function Footer() {
             <span className="text-xl font-bold tracking-tight text-white">Loading Tecnology</span>
           </div>
           <div className="flex gap-6">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Serviços</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Cases</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Contato</a>
+            <a href="#servicos" className="text-gray-400 hover:text-white transition-colors text-sm">Serviços</a>
+            <a href="#cases" className="text-gray-400 hover:text-white transition-colors text-sm">Cases</a>
+            <a href="#contato" className="text-gray-400 hover:text-white transition-colors text-sm">Contato</a>
           </div>
         </div>
         <div className="text-center text-gray-500 text-sm mt-8 border-t border-white/10 pt-8">

@@ -2,6 +2,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Technologies } from "@/components/sections/Technologies";
 import { Cases } from "@/components/sections/Cases";
 import { Faq } from "@/components/sections/Faq";
+import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <Technologies />
       <Cases />
       <Faq />
+      <Contact />
       <Footer />
     </main>
   );

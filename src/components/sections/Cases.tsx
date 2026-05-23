@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export function Cases() {
   return (
-    <section className="py-24 bg-[#0a0a0a] relative overflow-hidden border-b border-white/10">
+    <section id="cases" className="py-24 bg-[#0a0a0a] relative overflow-hidden border-b border-white/10 scroll-mt-20">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
       
       <div className="container px-4 md:px-6 mx-auto relative z-10">
@@ -42,9 +42,9 @@ export function Cases() {
               ))}
             </ul>
 
-            <button className="flex items-center text-blue-400 hover:text-blue-300 font-medium transition-colors mt-4">
+            <a href="https://chopphub.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-blue-400 hover:text-blue-300 font-medium transition-colors mt-4">
               Ver detalhes do projeto <ArrowRight className="w-4 h-4 ml-2" />
-            </button>
+            </a>
           </motion.div>
 
           <motion.div 

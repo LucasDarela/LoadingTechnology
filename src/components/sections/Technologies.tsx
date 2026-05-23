@@ -21,7 +21,7 @@ const technologies = [
 
 export function Technologies() {
   return (
-    <section className="py-24 bg-[#0a0a0a] border-b border-white/10">
+    <section id="servicos" className="py-24 bg-[#0a0a0a] border-b border-white/10 scroll-mt-20">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center justify-center text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">Nossa Stack Tecnológica</h2>
