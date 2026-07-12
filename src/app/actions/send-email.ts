@@ -13,7 +13,7 @@ export async function sendEmailAction(formData: FormData) {
 
   try {
     const data = await resend.emails.send({
-      from: "Site Loading Tecnology <contato@loadingtecnology.com>",
+      from: "Site Loading Technology <contato@loadingtechnology.com>",
       to: "suporte@chopphub.com",
       replyTo: email,
       subject: `[Novo Contato] ${subject}`,

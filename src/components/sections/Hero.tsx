@@ -52,7 +52,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="max-w-[600px] text-gray-400 md:text-xl"
         >
-          Na Loading Tecnology, desenvolvemos soluções de software escaláveis e
+          Na Loading Technology, desenvolvemos soluções de software escaláveis e
           modernas que impulsionam o seu negócio para o futuro.
         </motion.p>
 

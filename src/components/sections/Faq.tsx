@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 const faqs = [
   {
-    question: "Por que escolher a Loading Tecnology e não um freelancer?",
+    question: "Por que escolher a Loading Technology e não um freelancer?",
     answer: "Trabalhamos com uma equipe multidisciplinar. Diferente de um freelancer, garantimos continuidade, qualidade de código, arquitetura escalável e não deixamos seu projeto na mão. Somos uma empresa parceira de longo prazo."
   },
   {

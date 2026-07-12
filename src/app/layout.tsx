@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Loading Tecnology - Engenharia de Software",
+  title: "Loading Technology - Engenharia de Software",
   description: "Desenvolvemos soluções de software escaláveis e modernas que impulsionam o seu negócio para o futuro.",
 };
 

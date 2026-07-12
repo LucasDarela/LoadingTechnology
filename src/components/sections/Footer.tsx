@@ -7,7 +7,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
           <div className="flex items-center gap-3">
             <Logo className="w-8 h-8 text-blue-500" />
-            <span className="text-xl font-bold tracking-tight text-white">Loading Tecnology</span>
+            <span className="text-xl font-bold tracking-tight text-white">Loading Technology</span>
           </div>
           <div className="flex gap-6">
             <a href="#servicos" className="text-gray-400 hover:text-white transition-colors text-sm">Serviços</a>
@@ -16,7 +16,7 @@ export function Footer() {
           </div>
         </div>
         <div className="text-center text-gray-500 text-sm mt-8 border-t border-white/10 pt-8">
-          &copy; {new Date().getFullYear()} Loading Tecnology. Todos os direitos reservados.
+          &copy; {new Date().getFullYear()} Loading Technology. Todos os direitos reservados.
         </div>
       </div>
     </footer>
