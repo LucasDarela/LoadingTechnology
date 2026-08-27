@@ -12,16 +12,22 @@ export async function sendEmailAction(formData: FormData) {
   const message = formData.get("message") as string;
 
   try {
-    const data = await resend.emails.send({
-      from: "Site Loading Technology <contato@loadingtechnology.com>",
+    const { data, error } = await resend.emails.send({
+      from: "Site Loading Technology <contato@loadingtechnology.com.br>",
       to: "suporte@chopphub.com",
       replyTo: email,
       subject: `[Novo Contato] ${subject}`,
       text: `Nome: ${name}\nE-mail: ${email}\nTelefone: ${phone}\n\nMensagem:\n${message}`,
     });
 
+    if (error) {
+      console.error("Erro do Resend ao enviar e-mail:", error);
+      return { success: false, error: "Erro ao enviar e-mail" };
+    }
+
     return { success: true, data };
   } catch (error) {
+    console.error("Erro inesperado ao enviar e-mail:", error);
     return { success: false, error: "Erro ao enviar e-mail" };
   }
 }
