@@ -31,7 +31,7 @@ export function Logo({ className, ...props }: LogoProps) {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100"
-      className={cn("w-10 h-10 animate-[spin_3s_linear_infinite]", className)}
+      className={cn("w-10 h-10 animate-[spin_3s_linear_infinite] motion-reduce:animate-none", className)}
       {...props}
     >
       {bars}

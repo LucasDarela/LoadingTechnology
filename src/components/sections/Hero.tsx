@@ -1,82 +1,59 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Logo } from "@/components/ui/logo";
+import { ArrowRight } from "lucide-react";
+import { Chapter, Fade, Kicker, Lines } from "@/components/experience/Reveal";
+import { scrollToChapter } from "@/lib/experience";
 
 export function Hero() {
+  const go = (id: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    scrollToChapter(id);
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden border-b border-white/10 pt-20">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-[#0a0a0a] to-[#0a0a0a]" />
+    <Chapter id="inicio">
+      <div className="mx-auto flex min-h-[100svh] max-w-[90rem] flex-col items-center justify-center px-5 py-32 text-center md:px-10">
+        <div className="text-halo text-halo-soft flex flex-col items-center gap-6 md:gap-8">
+          <Kicker trigger="ready">Inovação e Engenharia de Software</Kicker>
 
-      <div className="container px-4 md:px-6 relative z-10 flex flex-col items-center text-center space-y-8">
-        {/* Animated Logo at the top of Hero */}
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="mb-4"
-        >
-          <div className="relative flex items-center justify-center w-32 h-32 md:w-40 md:h-40">
-            <Logo className="w-20 h-20 md:w-24 md:h-24 text-blue-500" />
-            <div className="absolute inset-0 rounded-full bg-blue-400/20 blur-xl animate-pulse"></div>
-          </div>
-        </motion.div>
+          <Lines
+            as="h1"
+            trigger="ready"
+            delay={0.1}
+            className="text-[clamp(1.95rem,min(7vw,12vh),7.5rem)] font-bold leading-[0.92] tracking-[-0.045em] text-ice"
+            lines={[
+              "Transformando ideias",
+              "em tecnologia de",
+              <span key="impacto" className="text-neon-hot">
+                alto impacto.
+              </span>,
+            ]}
+          />
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-gray-300 backdrop-blur-sm"
-        >
-          <span className="flex h-2 w-2 rounded-full bg-blue-500 mr-2"></span>
-          Inovação e Engenharia de Software
-        </motion.div>
+          <Fade trigger="ready" delay={0.45} as="p" className="max-w-[46ch] text-lg leading-relaxed text-ice/80 md:text-xl">
+            Na Loading Technology, desenvolvemos soluções de software escaláveis e modernas que impulsionam o seu
+            negócio para o futuro.
+          </Fade>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter"
-        >
-          Transformando ideias em <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600">
-            tecnologia de alto impacto.
-          </span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="max-w-[600px] text-gray-400 md:text-xl"
-        >
-          Na Loading Technology, desenvolvemos soluções de software escaláveis e
-          modernas que impulsionam o seu negócio para o futuro.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-col sm:flex-row gap-4"
-        >
-          <Button
-            asChild
-            className="bg-blue-600 hover:bg-blue-700 text-white border-0 rounded-full px-8 py-6 text-lg"
-          >
-            <a href="#contato">
-              Inicie seu Projeto
+          <Fade trigger="ready" delay={0.6} className="flex flex-col gap-3 sm:flex-row">
+            <a
+              href="#contato"
+              onClick={go("contato")}
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-ice px-7 py-4 font-medium text-background transition-[transform,background-color] duration-150 ease-out hover:bg-white active:scale-[0.97]"
+            >
+              Inicie seu projeto
+              <ArrowRight className="h-4 w-4 transition-transform duration-200 ease-[var(--ease-out)] group-hover:translate-x-1" />
             </a>
-          </Button>
-          <Button asChild className="bg-transparent text-white border border-white/20 hover:bg-white/10 rounded-full px-8 py-6 text-lg">
-            <a href="#cases">
+            <a
+              href="#cases"
+              onClick={go("cases")}
+              className="inline-flex items-center justify-center rounded-full border border-ice/20 px-7 py-4 font-medium text-ice transition-[transform,background-color,border-color] duration-150 ease-out hover:border-ice/40 hover:bg-ice/5 active:scale-[0.97]"
+            >
               Conheça nossos cases
             </a>
-          </Button>
-        </motion.div>
+          </Fade>
+        </div>
       </div>
-    </section>
+    </Chapter>
   );
 }

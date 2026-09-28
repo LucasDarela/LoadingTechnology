@@ -1,14 +1,107 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 
 @theme {
-  --color-background: #0a0a0a;
-  --color-foreground: #ffffff;
+  --color-background: #050507;
+  --color-foreground: #dce9ff;
+  --color-ice: #dce9ff;
+  --color-muted: #8a8f9c;
+  --color-accent: #6d87c7;
+  --color-neon: #245de7;
+  --color-neon-hot: #4f7dff;
+  --color-neon-deep: #1a2fa8;
+
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-mono: var(--font-space-mono), ui-monospace, "SF Mono", Menlo, monospace;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 @layer base {
+  html {
+    background-color: var(--color-background);
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-display);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-neon) 45%, transparent);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Legenda mono em caixa alta, usada no HUD, kickers e captions */
+  .caption {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* Escurece o fundo 3D atrás do bloco de texto para garantir leitura */
+  .text-halo {
+    position: relative;
+    isolation: isolate;
+  }
+  .text-halo::before {
+    content: "";
+    position: absolute;
+    inset: -18% -12%;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(closest-side, rgb(5 5 7 / 0.8), transparent);
+    filter: blur(18px);
+  }
+
+  /* Halo mais leve no hero, para o spinner do logo aparecer atrás do título */
+  .text-halo-soft::before {
+    background: radial-gradient(closest-side, rgb(5 5 7 / 0.45), transparent);
+  }
+
+  .glass {
+    background: rgb(10 14 28 / 0.55);
+    border: 1px solid rgb(220 233 255 / 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .field {
+    width: 100%;
+    background: rgb(220 233 255 / 0.03);
+    border: 1px solid rgb(220 233 255 / 0.1);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    color: var(--color-ice);
+    transition:
+      border-color 200ms var(--ease-out),
+      background-color 200ms var(--ease-out);
+  }
+  .field::placeholder {
+    color: rgb(138 143 156 / 0.7);
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-neon-hot);
+    background: rgb(36 93 231 / 0.08);
+  }
+}
+
+/* Preloader: sem JS ele nunca sai, então escondemos */
+html.no-js .preloader {
+  display: none;
 }

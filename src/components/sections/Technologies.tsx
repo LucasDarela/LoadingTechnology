@@ -1,53 +1,59 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { 
-  Code2, Database, Cloud, Smartphone, 
-  Monitor, LayoutTemplate, Server, Cpu
-} from "lucide-react";
+import { Chapter, Fade, Kicker, Lines } from "@/components/experience/Reveal";
 
 const technologies = [
-  { name: "JavaScript", icon: <Code2 className="w-8 h-8 text-yellow-400" /> },
-  { name: "Python", icon: <Cpu className="w-8 h-8 text-blue-500" /> },
-  { name: "MySQL", icon: <Database className="w-8 h-8 text-orange-400" /> },
-  { name: "AWS", icon: <Cloud className="w-8 h-8 text-yellow-500" /> },
-  { name: "Node.js", icon: <Server className="w-8 h-8 text-green-500" /> },
-  { name: "Vue.js", icon: <LayoutTemplate className="w-8 h-8 text-green-400" /> },
-  { name: "Angular", icon: <LayoutTemplate className="w-8 h-8 text-red-500" /> },
-  { name: "React", icon: <Monitor className="w-8 h-8 text-blue-400" /> },
-  { name: "Android", icon: <Smartphone className="w-8 h-8 text-green-500" /> },
-  { name: "iOS", icon: <Smartphone className="w-8 h-8 text-gray-300" /> },
+  { name: "JavaScript", area: "Web" },
+  { name: "React", area: "Web" },
+  { name: "Vue.js", area: "Web" },
+  { name: "Angular", area: "Web" },
+  { name: "Node.js", area: "Backend" },
+  { name: "Python", area: "Backend" },
+  { name: "MySQL", area: "Dados" },
+  { name: "AWS", area: "Cloud" },
+  { name: "Android", area: "Mobile" },
+  { name: "iOS", area: "Mobile" },
 ];
 
 export function Technologies() {
   return (
-    <section id="servicos" className="py-24 bg-[#0a0a0a] border-b border-white/10 scroll-mt-20">
-      <div className="container px-4 md:px-6 mx-auto">
-        <div className="flex flex-col items-center justify-center text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">Nossa Stack Tecnológica</h2>
-          <p className="text-gray-400 max-w-[700px] md:text-lg">
-            Utilizamos as melhores e mais modernas ferramentas do mercado para garantir que seu projeto seja rápido, seguro e escalável.
-          </p>
-        </div>
+    <Chapter id="servicos">
+      <div className="mx-auto grid min-h-screen max-w-[90rem] items-center px-5 py-32 md:grid-cols-12 md:pl-10 md:pr-28">
+        <div className="text-halo flex flex-col gap-7 md:col-span-7 lg:col-span-6">
+          <Kicker index="01">Nossa stack tecnológica</Kicker>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-5xl mx-auto">
-          {technologies.map((tech, index) => (
-            <motion.div
-              key={tech.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="flex flex-col items-center justify-center p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-colors group cursor-default"
-            >
-              <div className="mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                {tech.icon}
-              </div>
-              <span className="font-medium text-gray-200">{tech.name}</span>
-            </motion.div>
-          ))}
+          <Lines
+            className="text-[clamp(2rem,min(4.4vw,8.5vh),4.5rem)] font-medium leading-[0.98] tracking-[-0.035em] text-ice"
+            lines={["Ferramentas que", "escalam com você"]}
+          />
+
+          <Fade as="p" delay={0.2} className="max-w-[52ch] text-lg leading-relaxed text-ice/80">
+            Utilizamos as melhores e mais modernas ferramentas do mercado para garantir que seu projeto seja rápido,
+            seguro e escalável.
+          </Fade>
+
+          <ul className="grid grid-cols-2 border-t border-ice/10">
+            {technologies.map((tech, i) => (
+              <Fade
+                as="li"
+                key={tech.name}
+                delay={0.25 + i * 0.04}
+                className="group flex items-baseline justify-between gap-4 border-b border-ice/10 py-3.5 odd:border-r odd:pr-4 even:pl-4"
+              >
+                <span className="flex items-baseline gap-3">
+                  <span className="font-mono text-xs text-accent tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="text-ice transition-colors duration-200 group-hover:text-neon-hot">{tech.name}</span>
+                </span>
+                <span className="caption hidden text-[10px] text-muted sm:inline">{tech.area}</span>
+              </Fade>
+            ))}
+          </ul>
+
+          <Fade delay={0.4} className="caption text-muted">
+            Web · Mobile · Cloud · Dados
+          </Fade>
         </div>
       </div>
-    </section>
+    </Chapter>
   );
 }

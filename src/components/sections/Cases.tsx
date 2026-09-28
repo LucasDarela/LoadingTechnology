@@ -1,156 +1,107 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import { Chapter, Fade, Kicker, Lines } from "@/components/experience/Reveal";
+
+const choppHubFeatures = [
+  "Gestão financeira e de estoque integrada",
+  "App mobile para entregadores (Offline First)",
+  "Controle de barris e comodato em tempo real",
+  "Emissão de NF-e automatizada",
+];
+
+function ProjectBadge({ src, alt, name, kind }: { src: string; alt: string; name: string; kind: string }) {
+  return (
+    <Fade delay={0.15} className="flex items-center gap-4">
+      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white p-2 shadow-[0_0_40px_rgb(79_125_255/0.25)]">
+        <Image src={src} alt={alt} width={56} height={56} className="h-full w-full object-contain" />
+      </div>
+      <div>
+        <p className="font-medium text-ice">{name}</p>
+        <p className="caption text-muted">{kind}</p>
+      </div>
+    </Fade>
+  );
+}
+
+function ExternalLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Fade delay={0.35}>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group caption inline-flex items-center gap-2 border-b border-ice/20 pb-1 text-ice transition-colors duration-200 hover:border-neon-hot hover:text-neon-hot"
+      >
+        {children}
+        <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 ease-[var(--ease-out)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+      </a>
+    </Fade>
+  );
+}
 
 export function Cases() {
   return (
-    <section
-      id="cases"
-      className="py-24 bg-[#0a0a0a] relative overflow-hidden border-b border-white/10 scroll-mt-20"
-    >
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
+    <>
+      <Chapter id="cases">
+        <div className="mx-auto grid min-h-screen max-w-[90rem] items-center px-5 py-32 md:grid-cols-12 md:pl-10 md:pr-28">
+          <div className="text-halo flex flex-col gap-7 md:col-span-7 md:col-start-6 lg:col-span-6 lg:col-start-7">
+            <Kicker index="02">Case de sucesso</Kicker>
 
-      <div className="container px-4 md:px-6 mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="flex-1 space-y-6"
-          >
-            <div className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-sm text-blue-400">
-              Case de Sucesso
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter">
-              Como revolucionamos a gestão com o Chopp Hub
-            </h2>
-            <p className="text-gray-400 md:text-lg">
-              O Chopp Hub é a prova da nossa capacidade de entregar sistemas
-              complexos com interfaces amigáveis. Um sistema completo para
-              gestão de comodatos, clientes e rotas de entrega.
-            </p>
+            <Lines
+              className="text-[clamp(2rem,min(4.4vw,8.5vh),4.5rem)] font-medium leading-[0.98] tracking-[-0.035em] text-ice"
+              lines={["Como revolucionamos", "a gestão com o", <span key="ch" className="text-neon-hot">Chopp Hub</span>]}
+            />
 
-            <ul className="space-y-3">
-              {[
-                "Gestão financeira e de estoque integrada",
-                "App mobile para entregadores (Offline First)",
-                "Controle de barris e comodato em tempo real",
-                "Emissão de NF-e automatizada",
-              ].map((item, i) => (
-                <li key={i} className="flex items-center text-gray-300">
-                  <CheckCircle2 className="w-5 h-5 text-blue-500 mr-3 shrink-0" />
-                  {item}
-                </li>
+            <ProjectBadge src="/chopp-hub.png" alt="Logo do Chopp Hub" name="Chopp Hub" kind="ERP & Mobile App" />
+
+            <Fade as="p" delay={0.2} className="max-w-[52ch] text-lg leading-relaxed text-ice/80">
+              O Chopp Hub é a prova da nossa capacidade de entregar sistemas complexos com interfaces amigáveis. Um
+              sistema completo para gestão de comodatos, clientes e rotas de entrega.
+            </Fade>
+
+            <ul className="border-t border-ice/10">
+              {choppHubFeatures.map((item, i) => (
+                <Fade as="li" key={item} delay={0.25 + i * 0.05} className="flex items-baseline gap-4 border-b border-ice/10 py-3.5">
+                  <span className="font-mono text-xs text-accent tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="text-ice">{item}</span>
+                </Fade>
               ))}
             </ul>
 
-            <a
-              href="https://chopphub.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-blue-400 hover:text-blue-300 font-medium transition-colors mt-4"
-            >
-              Ver detalhes do projeto <ArrowRight className="w-4 h-4 ml-2" />
-            </a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="flex-1 w-full"
-          >
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 aspect-[4/3] flex items-center justify-center group">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-transparent opacity-50"></div>
-              {/* Logo da Imagem Real */}
-              <div className="relative z-10 text-center">
-                <div className="w-32 h-32 mx-auto flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-500 bg-white rounded-2xl p-2 shadow-lg">
-                  <Image
-                    src="/chopp-hub.png"
-                    alt="Chopp Hub Logo"
-                    width={128}
-                    height={128}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  Chopp Hub
-                </h3>
-                <p className="text-blue-300/80">ERP & Mobile App</p>
-              </div>
-            </div>
-          </motion.div>
+            <ExternalLink href="https://chopphub.com">Ver detalhes do projeto</ExternalLink>
+          </div>
         </div>
+      </Chapter>
 
-        {/* Divider */}
-        <div className="my-20 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <Chapter id="darela">
+        <div className="mx-auto grid min-h-screen max-w-[90rem] items-center px-5 py-32 md:grid-cols-12 md:pl-10 md:pr-28">
+          <div className="text-halo flex flex-col gap-7 md:col-span-7 lg:col-span-6">
+            <Kicker index="03">Web & presença digital</Kicker>
 
-        {/* Darela Chopp Express Case */}
-        <div className="flex flex-col-reverse md:flex-row gap-8 items-center max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="flex-1 w-full"
-          >
-            <div className="relative rounded-2xl overflow-hidden border border-white/5 bg-white/5 aspect-[16/9] flex items-center justify-center group max-h-[280px]">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-900/20 to-transparent opacity-50"></div>
-              <div className="relative z-10 text-center">
-                <div className="w-24 h-24 mx-auto flex items-center justify-center mb-3 group-hover:scale-105 transition-transform duration-500 bg-white rounded-xl p-3 shadow-lg">
-                  <Image
-                    src="/darela-logo.png"
-                    alt="Darela Chopp Express Logo"
-                    width={96}
-                    height={96}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-1">
-                  Darela Chopp
-                </h3>
-                <p className="text-orange-300/80 text-sm">
-                  Website / Landing Page
-                </p>
-              </div>
-            </div>
-          </motion.div>
+            <Lines
+              className="text-[clamp(2rem,min(4.4vw,8.5vh),4.5rem)] font-medium leading-[0.98] tracking-[-0.035em] text-ice"
+              lines={["Vitrine online", "focada em conversão"]}
+            />
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="flex-[1.5] space-y-4 pl-0 md:pl-8"
-          >
-            <div className="inline-flex items-center rounded-full border border-orange-500/30 bg-orange-500/10 px-3 py-1 text-xs text-orange-400">
-              Web & Presença Digital
-            </div>
-            <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-white">
-              Vitrine online focada em conversão
-            </h3>
-            <p className="text-gray-400 text-sm md:text-base">
-              Para a Darela Chopp Express, desenvolvemos um site rápido,
-              responsivo e direto ao ponto. O foco foi apresentar o catálogo de
-              produtos e facilitar o contato direto dos clientes para pedidos,
-              garantindo uma presença digital profissional e eficiente.
-            </p>
+            <ProjectBadge
+              src="/darela-logo.png"
+              alt="Logo da Darela Chopp Express"
+              name="Darela Chopp Express"
+              kind="Website / Landing Page"
+            />
 
-            <a
-              href="https://darelachopp.com.br"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-orange-400 hover:text-orange-300 font-medium transition-colors text-sm mt-2"
-            >
-              Visitar o site <ArrowRight className="w-4 h-4 ml-1" />
-            </a>
-          </motion.div>
+            <Fade as="p" delay={0.2} className="max-w-[52ch] text-lg leading-relaxed text-ice/80">
+              Para a Darela Chopp Express, desenvolvemos um site rápido, responsivo e direto ao ponto. O foco foi
+              apresentar o catálogo de produtos e facilitar o contato direto dos clientes para pedidos, garantindo uma
+              presença digital profissional e eficiente.
+            </Fade>
+
+            <ExternalLink href="https://darelachopp.com.br">Visitar o site</ExternalLink>
+          </div>
         </div>
-      </div>
-    </section>
+      </Chapter>
+    </>
   );
 }
