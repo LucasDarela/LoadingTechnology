@@ -1,0 +1,17 @@
+services:
+  loadingtechnology:
+    build: .
+    container_name: loadingtechnology
+    restart: unless-stopped
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+    networks:
+      - proxy
+networks:
+  proxy:
+    external: true
